@@ -1,3 +1,12 @@
+##This file consists of functions which are used calculate the inverse of a given matrix
+## and the result will be stored in a cache. If we need to retrieve the maxtrix inversion
+##result multiple times then instead of calculating the value of inverse again and again
+## these methods will return the result stored in the cache.
+
+
+## This method creates a cache matrix and returns a closure (list) which has
+## the data associated with the cache matrix.
+
 makeCacheMatrix <- function(x = matrix()) 
   {
   # inv will store the cached inverse matrix
@@ -19,7 +28,9 @@ makeCacheMatrix <- function(x = matrix())
   # Return the matrix with our newly defined functions
   list(set = set, get = get, setinv = setinv, getinv = getinv)
 }
-
+## This function will check the result of matrix inversion in the cache. If the
+## result is available then it is returned. If the result is not available then
+## the matrix inversion is calculated and the result is stored in the cache.
 cacheSolve <- function(x, ...) 
 {
   inv <- x$getinv()
